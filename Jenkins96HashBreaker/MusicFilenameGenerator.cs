@@ -41,6 +41,8 @@ namespace Jenkins96HashBreaker
             if (TypePart == null)
             {
                 MainPart = MainPartGen.NextWord();
+                if (MainPart == null)
+                    return null;
                 TypePartGen.Refresh();
                 TypePart = TypePartGen.NextWord();
             }

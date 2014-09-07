@@ -46,14 +46,14 @@ namespace Jenkins96HashBreaker
             string word;
             while ((word = gen.NextFilename()) != null)
             {
-                if (gen.FilenameCount() % 100000 == 0)
-                    Console.WriteLine("{0}: {1}", Thread.CurrentThread.Name, word);
-                    //Thread.Sleep(1000);
+                //if (gen.FilenameCount() % 100000 == 0)
+                    //Console.WriteLine("{0}: {1}", Thread.CurrentThread.Name, word);
+                    //Thread.Sleep(500);
                 ulong hash = Hasher.ComputeHash(word);
                 if (Hashes.Contains(hash))
                 {
                     Console.WriteLine("!!!>>> {0}={1}", hash, word);
-                    FoundHashesWriter.WriteLine("{0}={1}", hash, word);
+                    FoundHashesWriter.WriteLine(word);
                 }
             }
         }
