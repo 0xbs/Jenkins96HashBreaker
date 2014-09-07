@@ -28,7 +28,7 @@ namespace Jenkins96HashBreaker
 
             HashBreaker breaker;
             Thread[] LoopThreads = new Thread[9];
-            /*
+            
             for (ulong i = 0; i < 8; i++)
             {
                 breaker = new HashBreaker(Hashes, FoundHashesWriter);
@@ -37,7 +37,7 @@ namespace Jenkins96HashBreaker
                 LoopThreads[i].Start(new HashBreakerStartParams(eighthFilenames * i, eighthFilenames * (i+1)));
                 Console.WriteLine("Starting HashBreaker {0}", i);
             }
-            */
+            /**/
 
             breaker = new HashBreaker(Hashes, FoundHashesWriter);
             LoopThreads[8] = new Thread(breaker.LoopThroughFilenames);
