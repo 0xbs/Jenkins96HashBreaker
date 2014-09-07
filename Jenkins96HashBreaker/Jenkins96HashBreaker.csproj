@@ -39,7 +39,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -47,6 +47,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -60,6 +61,7 @@
   <ItemGroup>
     <Compile Include="IFilenameGenerator.cs" />
     <Compile Include="HashBreaker.cs" />
+    <Compile Include="SimpleMusicFilenameGenerator.cs" />
     <Compile Include="MusicFilenameGenerator.cs" />
     <Compile Include="ListWordGenerator.cs" />
     <Compile Include="AlphabetWordGenerator.cs" />

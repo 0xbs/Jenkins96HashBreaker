@@ -9,8 +9,13 @@ namespace Jenkins96HashBreaker
 {
     class HashBreakerStartParams
     {
+        public bool simple = false;
         public ulong skipFilenames;
         public ulong numFilenames;
+        public HashBreakerStartParams()
+        {
+            this.simple = true;
+        }
         public HashBreakerStartParams(ulong skipFilenames, ulong numFilenames)
         {
             this.skipFilenames = skipFilenames;
@@ -33,7 +38,11 @@ namespace Jenkins96HashBreaker
         public void LoopThroughFilenames(object o)
         {
             HashBreakerStartParams genParams = (HashBreakerStartParams)o;
-            MusicFilenameGenerator gen = new MusicFilenameGenerator(genParams.skipFilenames, genParams.numFilenames);
+            IFilenameGenerator gen;
+            if (genParams.simple)
+                gen = new SimpleMusicFilenameGenerator();
+            else
+                gen = new MusicFilenameGenerator(genParams.skipFilenames, genParams.numFilenames);
             string word;
             while ((word = gen.NextFilename()) != null)
             {

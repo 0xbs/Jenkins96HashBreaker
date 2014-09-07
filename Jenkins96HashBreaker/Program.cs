@@ -26,18 +26,26 @@ namespace Jenkins96HashBreaker
             ulong totalFilenames = 2481152873203736576;
             ulong eighthFilenames = totalFilenames / 8;
 
-            Thread[] LoopThreads = new Thread[8];
+            HashBreaker breaker;
+            Thread[] LoopThreads = new Thread[9];
             for (ulong i = 0; i < 8; i++)
             {
-                HashBreaker breaker = new HashBreaker(Hashes, FoundHashesWriter);
+                breaker = new HashBreaker(Hashes, FoundHashesWriter);
                 LoopThreads[i] = new Thread(breaker.LoopThroughFilenames);
                 LoopThreads[i].Name = String.Format("HashBreaker {0}", i);
                 LoopThreads[i].Start(new HashBreakerStartParams(eighthFilenames * i, eighthFilenames * (i+1)));
                 Console.WriteLine("Starting HashBreaker {0}", i);
             }
 
+            breaker = new HashBreaker(Hashes, FoundHashesWriter);
+            LoopThreads[8] = new Thread(breaker.LoopThroughFilenames);
+            LoopThreads[8].Name = String.Format("HashBreaker simple");
+            LoopThreads[8].Start(new HashBreakerStartParams());
+            Console.WriteLine("Starting HashBreaker simple");
+
             foreach (Thread SomeThread in LoopThreads)
-                SomeThread.Join();
+                if (SomeThread != null)
+                    SomeThread.Join();
  
             Console.WriteLine("End");
             Console.ReadKey();

@@ -9,5 +9,6 @@ namespace Jenkins96HashBreaker
     interface IFilenameGenerator
     {
         string NextFilename();
+        ulong FilenameCount();
     }
 }
