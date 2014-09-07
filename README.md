@@ -21,6 +21,10 @@ So be smart:
 5. ??
 6. Hit Ctrl+C when you think you have done enough or close the command window
 7. Profit: results are stored in found.txt
+8. 
+
+## But what about my texture file names?
+Feel free to modify the source code to your needs.
 
 ## Credits
 The implemenatation of the Jenkins96 hash algorithm is from @tomrus88, see
